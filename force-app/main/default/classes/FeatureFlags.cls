@@ -64,7 +64,7 @@ public with sharing class FeatureFlags {
     @TestVisible
     private FeatureFlagResult hasPermissionEnabled(FeatureFlag__mdt contextFlag) {
 
-        Boolean hasPermission = FeatureManagement.checkPermission(contextFlag.CustomPermission__c);
+        Boolean hasPermission = provider.hasAssignedPermission(contextFlag.CustomPermission__c);
 
         FeatureFlagReason reason = (hasPermission) ? FeatureFlagReason.CUSTOM_PERMISSION : FeatureFlagReason.PERMISSION_NOT_ASSIGNED;
         

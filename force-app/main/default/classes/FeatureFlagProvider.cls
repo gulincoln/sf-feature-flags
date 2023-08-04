@@ -20,6 +20,11 @@ public virtual with sharing class FeatureFlagProvider {
         return this.customPermissions;
     }
 
+    virtual
+    public Boolean hasAssignedPermission(String customPermission) {
+        return FeatureManagement.checkPermission(customPermission);
+    }
+
     private void setAllPermissions() {
 
         for(CustomPermission permission : [SELECT Id, DeveloperName FROM CustomPermission]) {
